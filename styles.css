@@ -1,3 +1,8 @@
+
+/* =========================================
+   1. DESIGN TOKENS
+========================================= */
+
 :root {
   --ink: #202020;
   --muted: #626262;
@@ -7,10 +12,19 @@
   --paper: #ffffff;
   --background: #f5f5f5;
   --soft-surface: #f7f7f7;
+
   --content-width: 1000px;
+
   --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
   --font-ui: Inter, Arial, Helvetica, sans-serif;
+
+  --transition-fast: 160ms ease;
 }
+
+
+/* =========================================
+   2. RESET AND BASE STYLES
+========================================= */
 
 *,
 *::before,
@@ -27,13 +41,23 @@ html {
 body {
   min-width: 320px;
   margin: 0;
+
   color: var(--ink);
   background: var(--background);
+
   font-family: var(--font-body);
   font-size: 18px;
   line-height: 1.8;
+
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
 }
 
 a {
@@ -48,7 +72,7 @@ a:hover {
 
 a:focus-visible {
   outline: 3px solid #777777;
-  outline-offset: 3px;
+  outline-offset: 4px;
 }
 
 ::selection {
@@ -56,15 +80,23 @@ a:focus-visible {
   background: #333333;
 }
 
+
+/* =========================================
+   3. ACCESSIBILITY
+========================================= */
+
 .skip-link {
   position: absolute;
   top: -100px;
   left: 16px;
   z-index: 20;
+
   padding: 8px 12px;
+
   color: #ffffff;
   background: #111111;
   border-radius: 3px;
+
   font-family: var(--font-ui);
   font-size: 13px;
   font-weight: 600;
@@ -75,13 +107,24 @@ a:focus-visible {
   top: 12px;
 }
 
+
+/* =========================================
+   4. MAIN CONTAINER
+========================================= */
+
 .container {
   width: min(calc(100% - 48px), var(--content-width));
   margin-inline: auto;
 }
 
+
+/* =========================================
+   5. SITE HEADER AND NAVIGATION
+========================================= */
+
 .site-header {
   padding: 25px 0;
+
   background: var(--paper);
   border-bottom: 1px solid var(--rule);
 }
@@ -95,11 +138,14 @@ a:focus-visible {
 
 .site-brand {
   flex-shrink: 0;
+
   color: var(--ink);
+
   font-family: var(--font-ui);
   font-size: 18px;
   font-weight: 700;
   letter-spacing: -0.02em;
+
   text-decoration: none;
 }
 
@@ -118,16 +164,24 @@ a:focus-visible {
   justify-content: flex-end;
   flex-wrap: wrap;
   gap: 8px 20px;
+
   font-family: var(--font-ui);
 }
 
 .site-nav a {
   padding: 7px 0;
+
   color: var(--muted);
+
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
+
   border-bottom: 2px solid transparent;
+
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast);
 }
 
 .site-nav a:hover,
@@ -136,6 +190,11 @@ a:focus-visible {
   border-bottom-color: var(--accent);
 }
 
+
+/* =========================================
+   6. PAGE LAYOUT
+========================================= */
+
 main.container {
   padding-top: 48px;
   padding-bottom: 76px;
@@ -143,19 +202,29 @@ main.container {
 
 .post {
   padding: 56px 64px;
+
   background: var(--paper);
   border: 1px solid #e4e4e4;
+  border-radius: 2px;
 }
+
+
+/* =========================================
+   7. ARTICLE HEADER
+========================================= */
 
 .article-header {
   margin-bottom: 36px;
   padding-bottom: 30px;
+
   border-bottom: 1px solid var(--rule);
 }
 
 .eyebrow {
   margin: 0 0 14px;
+
   color: var(--muted);
+
   font-family: var(--font-ui);
   font-size: 11px;
   font-weight: 700;
@@ -165,12 +234,15 @@ main.container {
 
 .article-title {
   margin: 0 0 20px;
+
   color: #181818;
+
   font-family: var(--font-ui);
   font-size: clamp(32px, 4vw, 43px);
   font-weight: 700;
   line-height: 1.24;
   letter-spacing: -0.04em;
+
   overflow-wrap: break-word;
 }
 
@@ -179,7 +251,9 @@ main.container {
   flex-wrap: wrap;
   gap: 3px 9px;
   margin: 0;
+
   color: var(--muted);
+
   font-family: var(--font-ui);
   font-size: 12px;
   line-height: 1.9;
@@ -187,15 +261,23 @@ main.container {
 
 .article-lede {
   margin: 22px 0 0;
+
   color: #464646;
+
   font-family: var(--font-ui);
   font-size: 17px;
   line-height: 1.8;
 }
 
+
+/* =========================================
+   8. TABLE OF CONTENTS
+========================================= */
+
 .table-of-contents {
   margin: 0 0 42px;
   padding: 22px 25px;
+
   background: var(--soft-surface);
   border: 1px solid var(--rule);
   border-left: 3px solid #222222;
@@ -203,7 +285,9 @@ main.container {
 
 .table-of-contents h2 {
   margin: 0 0 14px;
+
   color: var(--ink);
+
   font-family: var(--font-ui);
   font-size: 15px;
   font-weight: 700;
@@ -213,9 +297,12 @@ main.container {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px 28px;
+
   margin: 0;
   padding-left: 23px;
+
   color: var(--muted);
+
   font-family: var(--font-ui);
   font-size: 13px;
   line-height: 1.7;
@@ -233,12 +320,19 @@ main.container {
 .table-of-contents a {
   color: #383838;
   text-decoration: none;
+
+  transition: color var(--transition-fast);
 }
 
 .table-of-contents a:hover {
   color: #000000;
   text-decoration: underline;
 }
+
+
+/* =========================================
+   9. ARTICLE SECTIONS
+========================================= */
 
 .post section {
   margin: 0 0 50px;
@@ -251,19 +345,26 @@ main.container {
 
 .post section h2 {
   margin: 0 0 24px;
+
   color: #202020;
+
   font-family: var(--font-ui);
   font-size: clamp(23px, 3vw, 28px);
   font-weight: 700;
   line-height: 1.4;
   letter-spacing: -0.025em;
+
+  overflow-wrap: break-word;
 }
 
 .post p {
   margin: 0 0 23px;
+
   color: #343434;
+
   font-size: 17px;
   line-height: 1.9;
+
   overflow-wrap: anywhere;
 }
 
@@ -285,15 +386,27 @@ main.container {
   color: #333333;
 }
 
+
+/* =========================================
+   10. BLOCKQUOTES
+========================================= */
+
 .post blockquote {
   margin: 36px 0;
   padding: 16px 0 16px 24px;
+
   color: #333333;
   border-left: 2px solid #333333;
+
   font-size: 18px;
   font-style: italic;
   line-height: 1.9;
 }
+
+
+/* =========================================
+   11. LISTS
+========================================= */
 
 .post ul,
 .post ol {
@@ -304,7 +417,9 @@ main.container {
 .post li {
   margin: 8px 0;
   padding-left: 4px;
+
   color: #343434;
+
   font-size: 17px;
   line-height: 1.85;
   text-align: justify;
@@ -314,43 +429,67 @@ main.container {
   color: #222222;
 }
 
+
+/* =========================================
+   12. INLINE CODE
+========================================= */
+
 .post code {
   padding: 2px 5px;
+
   color: #242424;
   background: #f0f0f0;
+
   border: 1px solid #e0e0e0;
   border-radius: 4px;
+
   font-family: Consolas, "Courier New", monospace;
   font-size: 0.88em;
+
   overflow-wrap: anywhere;
 }
+
+
+/* =========================================
+   13. APA 7 REFERENCES
+========================================= */
 
 .post section.references {
   margin-top: 58px;
   padding-top: 32px;
+
   border-top: 1px solid var(--rule);
 }
 
 .post section.references h2 {
   margin: 0 0 24px;
+
   color: #202020;
+
+  font-family: var(--font-ui);
   font-size: 23px;
   letter-spacing: 0;
 }
 
+/*
+  Consolidated reference styling:
+  - 0.5-inch hanging indent
+  - Double line spacing
+  - No additional paragraph spacing
+*/
+
 .post .reference-item {
-  margin: 0 0 18px;
-  padding-left: 48px;
+  margin: 0;
+  padding-left: 0.5in;
+
   color: #343434;
+
   font-size: 14px;
   line-height: 2;
   text-align: left;
-  text-indent: -48px;
-  overflow-wrap: anywhere;
-}
+  text-indent: -0.5in;
 
-.post .reference-item:last-child {
-  margin-bottom: 0;
+  overflow-wrap: anywhere;
 }
 
 .post .reference-item em {
@@ -359,10 +498,12 @@ main.container {
 
 .post .reference-item a {
   color: #222222;
+
   font-size: 13px;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
+
   overflow-wrap: anywhere;
 }
 
@@ -370,23 +511,34 @@ main.container {
   color: #555555;
 }
 
+
+/* =========================================
+   14. BOTTOM ARTICLE NAVIGATION
+========================================= */
+
 .article-bottom-nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 12px 24px;
+
   margin-top: 42px;
   padding: 22px 0;
+
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
+
   font-family: var(--font-ui);
   font-size: 13px;
 }
 
 .article-bottom-nav a {
   color: #242424;
+
   font-weight: 600;
   text-decoration: none;
+
+  transition: color var(--transition-fast);
 }
 
 .article-bottom-nav a:hover {
@@ -394,21 +546,35 @@ main.container {
   text-decoration: underline;
 }
 
+
+/* =========================================
+   15. FOOTER
+========================================= */
+
 .site-footer {
   padding: 26px 20px;
+
   text-align: center;
+
   background: var(--paper);
   border-top: 1px solid var(--rule);
 }
 
 .site-footer p {
   margin: 0;
+
   color: #555555;
+
   font-family: var(--font-ui);
   font-size: 12px;
   line-height: 1.8;
   text-align: center;
 }
+
+
+/* =========================================
+   16. TABLET RESPONSIVE DESIGN
+========================================= */
 
 @media (max-width: 800px) {
   .container {
@@ -459,6 +625,11 @@ main.container {
   }
 }
 
+
+/* =========================================
+   17. MOBILE RESPONSIVE DESIGN
+========================================= */
+
 @media (max-width: 500px) {
   .container {
     width: calc(100% - 24px);
@@ -492,6 +663,7 @@ main.container {
 
   .article-title {
     margin-bottom: 15px;
+
     font-size: 28px;
     line-height: 1.3;
     letter-spacing: -0.03em;
@@ -513,6 +685,7 @@ main.container {
   .table-of-contents ol {
     grid-template-columns: 1fr;
     gap: 6px;
+
     font-size: 13px;
   }
 
@@ -534,6 +707,7 @@ main.container {
   .post blockquote {
     margin: 28px 0;
     padding-left: 16px;
+
     font-size: 16px;
   }
 
@@ -548,9 +722,11 @@ main.container {
 
   .post .reference-item {
     padding-left: 28px;
+
     font-size: 12px;
     line-height: 2;
     text-indent: -28px;
+
     overflow-wrap: anywhere;
   }
 
@@ -567,6 +743,11 @@ main.container {
     padding: 20px 14px;
   }
 }
+
+
+/* =========================================
+   18. SMALL MOBILE SCREENS
+========================================= */
 
 @media (max-width: 360px) {
   .post {
@@ -587,8 +768,98 @@ main.container {
   }
 }
 
+
+/* =========================================
+   19. REDUCED MOTION ACCESSIBILITY
+========================================= */
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* =========================================
+   20. PRINT STYLES
+========================================= */
+
+@media print {
+  body {
+    color: #000000;
+    background: #ffffff;
+
+    font-size: 12pt;
+    line-height: 1.6;
+  }
+
+  .site-header,
+  .site-footer,
+  .skip-link,
+  .table-of-contents,
+  .article-bottom-nav {
+    display: none !important;
+  }
+
+  .container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  main.container {
+    padding: 0;
+  }
+
+  .post {
+    padding: 0;
+
+    border: 0;
+    background: #ffffff;
+  }
+
+  .article-title {
+    font-size: 24pt;
+  }
+
+  /*
+    Let long sections flow across printed pages.
+    Avoid separating headings from the following text.
+  */
+
+  .post section {
+    margin-bottom: 24pt;
+    break-inside: auto;
+  }
+
+  .post section h2 {
+    color: #000000;
+    font-size: 16pt;
+    break-after: avoid-page;
+  }
+
+  .post p {
+    color: #000000;
+
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+
+  .post .reference-item {
+    font-size: 10pt;
+  }
+
+  a {
+    color: #000000;
+    text-decoration: underline;
   }
 }

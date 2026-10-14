@@ -1,29 +1,58 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A student reflection on agentic AI, autonomous security operations, asset context, and the future role of human cybersecurity analysts.">
+
+  <meta
+    name="description"
+    content="A critical reflection on autonomous security operations, the SOC pilot model, trustworthy asset context, and responsible human oversight."
+  >
   <meta name="author" content="Jeoff Gaviola">
   <meta name="theme-color" content="#f5f5f5">
+
   <meta property="og:title" content="Can We Trust the SOC Pilot?">
-  <meta property="og:description" content="Evaluating autonomous AI, asset information, and human judgment in cybersecurity operations.">
+  <meta
+    property="og:description"
+    content="Evaluating autonomous AI, asset information, and human judgment in cybersecurity operations."
+  >
   <meta property="og:type" content="article">
+  <meta
+    property="og:url"
+    content="https://jeoffgaviola.github.io/IAS-Blog4/"
+  >
 
   <title>Can We Trust the SOC Pilot? | Jeoff Gaviola</title>
 
   <link rel="stylesheet" href="styles.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap"
+    rel="stylesheet"
+  >
 </head>
 
 <body id="top">
-  <a class="skip-link" href="#article-content">Skip to article</a>
+
+  <a class="skip-link" href="#article-content">
+    Skip to article
+  </a>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="site-brand" href="#top" aria-label="Return to the top of the page">
+
+      <a
+        class="site-brand"
+        href="#top"
+        aria-label="Return to the top of the page"
+      >
         Jeoff Gaviola<span class="brand-dot">.</span>
       </a>
 
@@ -33,505 +62,663 @@
         <a href="#table-of-contents">Contents</a>
         <a href="#references">References</a>
       </nav>
+
     </div>
   </header>
 
   <main class="container">
-    <article class="post" id="article-content" tabindex="-1">
+
+    <article
+      class="post"
+      id="article-content"
+      tabindex="-1"
+    >
+
+      <!-- ARTICLE HEADER -->
 
       <header class="article-header">
-        <p class="eyebrow">Cybersecurity · Information Assurance</p>
+
+        <p class="eyebrow">
+          Cybersecurity · Information Assurance
+        </p>
 
         <h1 class="article-title">
           Can We Trust the SOC Pilot? Evaluating Autonomous AI in Cybersecurity
         </h1>
 
         <p class="article-meta">
-          October 14, 2026 <span aria-hidden="true">·</span>
-          Critical Reflection <span aria-hidden="true">·</span>
+          <time datetime="2026-10-14">October 14, 2026</time>
+          <span aria-hidden="true">·</span>
+          Critical Reflection
+          <span aria-hidden="true">·</span>
           Agentic AI
         </p>
 
         <p class="article-lede">
-          AI can help security teams work faster, but responsible automation
-          still depends on reliable information, clear limits, and people
-          who know when to take control.
+          AI can help security teams work faster, but responsible
+          automation still depends on reliable information, clear
+          limits, and people who know when to take control.
         </p>
+
       </header>
 
-      <nav class="table-of-contents" id="table-of-contents" aria-label="Table of contents">
+      <!-- TABLE OF CONTENTS -->
+
+      <nav
+        class="table-of-contents"
+        id="table-of-contents"
+        aria-label="Table of contents"
+      >
+
         <h2>On This Page</h2>
 
         <ol>
-          <li><a href="#introduction">From Alert Handler to SOC Pilot</a></li>
-          <li><a href="#ai-autonomy">Where AI Can Act Independently</a></li>
-          <li><a href="#human-judgment">Why Human Judgment Matters</a></li>
-          <li><a href="#asset-context">The Problem With Incorrect Asset Information</a></li>
-          <li><a href="#guardrails">Making Automation Responsible</a></li>
-          <li><a href="#skills">Skills for a Future SOC Pilot</a></li>
-          <li><a href="#conclusion">Conclusion</a></li>
-          <li><a href="#references">References</a></li>
+          <li>
+            <a href="#introduction">
+              From Alert Handler to SOC Pilot
+            </a>
+          </li>
+
+          <li>
+            <a href="#model-reality">
+              Is the Airline Comparison Realistic?
+            </a>
+          </li>
+
+          <li>
+            <a href="#ai-autonomy">
+              Where AI Can Act Independently
+            </a>
+          </li>
+
+          <li>
+            <a href="#human-judgment">
+              Why Human Judgment Matters
+            </a>
+          </li>
+
+          <li>
+            <a href="#asset-context">
+              The Problem With Incorrect Asset Information
+            </a>
+          </li>
+
+          <li>
+            <a href="#guardrails">
+              Making Automation Responsible
+            </a>
+          </li>
+
+          <li>
+            <a href="#skills">
+              Skills for a Future SOC Pilot
+            </a>
+          </li>
+
+          <li>
+            <a href="#conclusion">
+              Conclusion
+            </a>
+          </li>
+
+          <li>
+            <a href="#references">
+              References
+            </a>
+          </li>
         </ol>
+
       </nav>
 
+      <!-- 1. INTRODUCTION -->
+
       <section id="introduction">
+
         <h2>From Alert Handler to SOC Pilot</h2>
 
         <p>
           Imagine arriving at work and finding hundreds of cybersecurity
-          alerts waiting to be investigated. Some may indicate a genuine
-          attack, while others might be harmless activity or false alarms.
-          A security analyst has to sort through all of them, find useful
-          evidence, and decide which situations deserve immediate attention.
-          When alerts continue arriving throughout the day, it becomes
-          difficult to give every incident the attention it deserves.
+          alerts waiting to be investigated. Some may point to a real
+          attack, while others may be harmless activity or false alarms.
+          A security analyst must sort through the noise, gather evidence,
+          and decide which situations need urgent attention. When alerts
+          keep arriving throughout the day, it becomes difficult to
+          investigate every event carefully.
         </p>
 
         <p>
-          This is the problem that caught my attention when I read
-          Velisaris's (2025) IBM article about building an autonomous
-          security operations center, or SOC. He compares the future
-          of security operations to a modern airliner. Machines handle
-          much of the routine work, while human analysts become "SOC
-          pilots" who supervise operations and step in when something
-          unfamiliar or complicated happens.
+          This is the challenge discussed in John Velisaris's (2025)
+          IBM article about building an autonomous security operations
+          center, or SOC. Velisaris compares the future of security
+          operations to a modern airliner: machines manage routine
+          operations, while human analysts become "SOC pilots" who
+          supervise the process and take control when something
+          unfamiliar happens, such as a possible zero-day attack.
         </p>
 
         <p>
-          I find this comparison interesting because it does not
-          necessarily mean that humans become unnecessary. Instead,
-          their responsibilities change. Rather than spending most of
-          their time repeating the same investigative steps, analysts
-          can concentrate on unusual threats, important decisions, and
-          situations in which an automated response might cause harm.
-          In theory, this could help security teams respond more quickly
-          without overwhelming their people.
+          I find this model promising because it changes the analyst's
+          role instead of simply removing it. Rather than repeating the
+          same investigative steps, analysts could focus on unusual
+          threats, complicated incidents, and decisions where a mistake
+          could harm the organization. However, I do not think a SOC
+          should operate with minimal human involvement just because
+          an AI agent can complete tasks quickly. A capable agent can
+          still misunderstand evidence, act on outdated information,
+          or take an action that is technically reasonable but damaging
+          to the business.
         </p>
 
         <p>
-          However, I do not think the SOC pilot model should be treated
-          as a promise that cybersecurity can eventually run without
-          meaningful human involvement. AI agents can make mistakes,
-          misunderstand information, and choose actions that are
-          technically reasonable but operationally harmful. My position
-          is that the model is realistic if organizations introduce it
-          carefully, test it properly, and maintain clear boundaries
-          around what an agent is allowed to do.
+          My view is that the SOC pilot model is realistic only when
+          autonomy is introduced gradually and matched to the level
+          of risk. AI should be allowed to handle routine work when
+          its actions are tested and limited. People must retain
+          meaningful control over high-impact decisions, and
+          organizations must take responsibility for the systems
+          and information they give their agents.
         </p>
+
       </section>
 
+      <!-- 2. EVALUATING THE SOC PILOT MODEL -->
+
+      <section id="model-reality">
+
+        <h2>Is the Airline Comparison Realistic?</h2>
+
+        <p>
+          The airline comparison is useful because it highlights the
+          difference between operating a system and supervising it.
+          Modern aviation relies on automation, but pilots still need
+          training, situational awareness, procedures, and the authority
+          to intervene. The lesson is not that humans are unnecessary;
+          it is that automation can handle predictable tasks while
+          trained people manage exceptions and remain accountable
+          for safe operation.
+        </p>
+
+        <p>
+          However, cybersecurity is not exactly like flying an airplane.
+          Flight systems operate within defined procedures and physical
+          limits, while attackers actively change their methods to
+          avoid detection. Security information can be incomplete,
+          the same action can have different consequences in different
+          organizations, and an attack may deliberately confuse the
+          tools used to detect it. A response that worked yesterday
+          may not be safe in a new situation.
+        </p>
+
+        <p>
+          It is also important to distinguish a convincing vision from
+          proof that fully autonomous SOCs are safe in every setting.
+          Velisaris (2025) makes a case for greater autonomy and for
+          giving agents the context needed to investigate and respond.
+          That is a useful direction, but each organization still needs
+          evidence that its own tools work under real conditions.
+          Success should be judged not only by how quickly alerts
+          are closed, but also by whether decisions are accurate,
+          service disruptions are avoided, and incidents are handled
+          properly.
+        </p>
+
+        <p>
+          For these reasons, I see the SOC pilot model as a realistic
+          goal for specific tasks, not a reason to remove human analysts
+          from the process entirely. Its responsible use depends on
+          the type of incident, the reliability of the available context,
+          the potential harm of the action, and the organization's
+          ability to detect and correct mistakes.
+        </p>
+
+      </section>
+
+      <!-- 3. SAFE AI AUTOMATION -->
+
       <section id="ai-autonomy">
+
         <h2>Where AI Can Act Independently</h2>
 
         <p>
-          AI is most useful when the task is repetitive, the instructions
-          are clear, and the possible consequences are limited. For
-          example, an agent can collect relevant security logs, group
-          duplicate alerts, summarize suspicious activity, compare events
-          with known indicators of compromise, and gather details from
-          endpoint or authentication tools. It can also prepare an
-          incident report, assign an initial priority, or notify the
-          team responsible for an affected system.
+          AI is most suitable for work that is repetitive, well defined,
+          and low risk. An agent can collect security logs, group
+          duplicate alerts, summarize suspicious activity, compare
+          events with known indicators of compromise, and retrieve
+          details from endpoint or authentication tools. It can also
+          prepare an incident report, recommend an initial severity
+          level, or notify the team responsible for an affected system.
         </p>
 
         <p>
-          These tasks might not sound especially impressive, but they
-          take up a considerable amount of an analyst's time. An
-          investigation may require checking several dashboards,
-          comparing login records, looking at device activity, and
-          searching for information about a particular threat. An AI
-          agent that can collect and organize this evidence helps
-          analysts get a clearer picture of the situation sooner.
+          These activities may seem ordinary, but they can take a large
+          amount of an analyst's time. An investigation may require
+          checking several dashboards, comparing login records,
+          reviewing device activity, and searching for threat
+          information. An agent that gathers these details into one
+          clear report can help a human analyst understand the
+          situation sooner and spend more time on the evidence
+          that matters.
         </p>
 
         <p>
-          I believe this is one of the safest starting points for
-          autonomous security operations. The agent is helping gather
-          information rather than making an irreversible decision.
-          Its output can still be checked, and a mistake in a preliminary
-          summary is less likely to cause a major outage than a mistake
-          in an automated shutdown.
+          Some defensive actions can also be automated when the
+          evidence is strong and the action has been approved in
+          advance. For example, an agent could temporarily block
+          a confirmed malicious domain or isolate a standard workstation
+          when multiple reliable signals show an active compromise.
+          These actions can limit an attacker's opportunity to cause
+          damage. The agent should still use restricted permissions,
+          record its actions, and follow a tested process for recovery.
         </p>
 
         <p>
-          Some response actions can also be automated when the evidence
-          is strong and the action has been carefully approved in advance.
-          For instance, a security system might temporarily block a
-          confirmed malicious domain or isolate an ordinary workstation
-          when several independent signals indicate an active compromise.
-          This can reduce the time an attacker has to cause damage.
+          Not every response should receive the same level of autonomy.
+          Collecting logs is generally less risky than shutting down
+          a production database, disabling an administrator account,
+          or isolating an entire network segment. The greater the
+          potential damage, the more confidence and oversight the
+          decision should require. A strong design separates permission
+          to investigate from permission to make disruptive changes.
         </p>
 
         <p>
-          Still, an agent should not receive unrestricted administrative
-          access simply because it can perform these tasks. Its
-          permissions should be limited to what it needs, its actions
-          should be recorded, and the organization should have a way
-          to review what happened. Where possible, a response should
-          also have a tested recovery procedure.
+          I would therefore introduce autonomy in stages. At first,
+          the agent could analyze events and suggest actions without
+          changing systems. After testing shows that its recommendations
+          are reliable, it could be allowed to perform narrow, reversible
+          actions in defined situations. Broader permissions should
+          come only after careful review. This allows an organization
+          to gain speed without treating every AI decision as
+          automatically trustworthy.
         </p>
 
-        <p>
-          Velisaris (2025) describes an approach in which agents can
-          investigate alerts, gather missing information, and use
-          context to determine a suitable next step. That is more
-          flexible than automating the same sequence of commands for
-          every incident. However, the ability to investigate a threat
-          is not the same as having the authority to make every decision
-          about it. An agent collecting evidence and an agent shutting
-          down a production database should not have the same level
-          of freedom.
-        </p>
-
-        <p>
-          For that reason, I would introduce autonomy in stages.
-          Gathering evidence and preparing reports can happen
-          automatically. Limited defensive actions may be automated
-          after thorough testing. Actions that could disrupt essential
-          services, delete information, or affect many users should
-          require stronger evidence and, when appropriate, human approval.
-          The aim should be to automate the routine without allowing
-          speed to become an excuse for careless decisions.
-        </p>
       </section>
 
+      <!-- 4. THE NEED FOR HUMAN JUDGMENT -->
+
       <section id="human-judgment">
+
         <h2>Why Human Judgment Still Matters</h2>
 
         <p>
-          Cybersecurity is not only about finding malicious activity.
-          It also involves understanding what an organization does,
-          which services are important, and what could happen if a
-          system becomes unavailable. A response that stops an attacker
-          might also interrupt an important business process. That is
-          where human judgment becomes essential.
+          Cybersecurity is not only about identifying malicious activity.
+          Analysts also need to understand what an organization does,
+          which services are essential, and what might happen if a
+          system becomes unavailable. A response may stop an attacker
+          but also interrupt payroll, medical services, customer
+          transactions, or other important work. These consequences
+          cannot always be judged from a security alert alone.
         </p>
 
         <p>
-          Consider a server that supports payroll or a critical customer
-          service. If the server shows signs of compromise, isolating
-          it might contain the incident. However, doing so could also
-          interrupt work for hundreds of people. A human analyst can
-          examine the evidence, contact the system owner, evaluate
-          alternative responses, and coordinate the decision with
-          the people responsible for the service.
+          Consider a server that supports a critical business application.
+          If there are signs that it has been compromised, isolating it
+          may contain the threat. However, the same action could
+          interrupt a service used by hundreds of people. A human
+          analyst may need to examine the evidence, contact the system
+          owner, consider safer alternatives, and coordinate the response
+          with other teams. These decisions require both technical
+          knowledge and an understanding of the organization's priorities.
         </p>
 
         <p>
-          Human involvement is especially important when an incident
+          Human judgment is especially important when an incident
           is unfamiliar. A possible zero-day attack, a suspected insider
-          threat, or several conflicting security signals may not fit
-          an existing response procedure. Analysts need to consider
-          alternative explanations, identify what remains unknown,
-          and decide whether the available evidence is strong enough
-          to support a particular action.
+          threat, or conflicting security signals may not fit an existing
+          response procedure. Analysts must consider alternative
+          explanations, identify what remains unknown, and decide
+          whether the evidence is strong enough to justify a particular
+          action. They must also be ready to change course when
+          new evidence appears.
         </p>
 
         <p>
-          There is also a risk of relying too heavily on a system that
-          sounds confident. If an agent recommends isolating a device
-          and provides a convincing explanation, an inexperienced
-          analyst might accept the recommendation without checking
-          the underlying evidence. This is why human oversight must
-          mean more than having someone watch a dashboard. The person
-          responsible needs enough knowledge, time, and authority
-          to question the system's conclusion.
+          Another danger is automation bias: people may trust a
+          machine's recommendation because it sounds confident or
+          appears more informed than they are. Human oversight is
+          not meaningful if an analyst simply approves every action
+          without checking the evidence. The person supervising the
+          agent needs enough training, time, and authority to question
+          a recommendation, stop an unsafe process, and explain why
+          a different response is necessary.
         </p>
 
         <p>
-          The National Institute of Standards and Technology's AI Risk
-          Management Framework identifies characteristics of trustworthy
-          AI, including validity and reliability, safety, security,
+          The National Institute of Standards and Technology's AI
+          Risk Management Framework discusses trustworthiness
+          qualities such as validity and reliability, safety, security,
           accountability, transparency, and explainability (Tabassi,
-          2023). Applied to a SOC, these principles support a basic
-          expectation: security analysts should be able to understand
-          why an agent recommended or performed an action, what
-          information it used, and what limitations remain.
+          2023). In a SOC, these ideas mean analysts should be able
+          to review why an agent recommended or performed an action,
+          which evidence it used, what assumptions it made, and where
+          uncertainty remains.
         </p>
 
         <p>
-          Human judgment is also needed to consider legal, privacy,
-          and organizational responsibilities. A security agent might
-          find personal information while investigating an incident,
-          but that does not mean every person in the organization
-          should have access to it. Analysts must know how to preserve
-          relevant evidence while respecting access restrictions and
-          applicable policies.
+          Human responsibility also includes privacy and legal
+          obligations. An agent may encounter sensitive information
+          during an investigation, but that does not mean every person
+          on the security team should have unrestricted access to it.
+          Analysts must preserve relevant evidence, respect access
+          rules, follow organizational policies, and make sure incident
+          handling remains accountable.
         </p>
 
         <p>
-          To me, the best SOC pilot is not someone who approves every
-          AI recommendation or someone who refuses to use automation.
-          It is a person who understands both the strengths and
-          weaknesses of the system. The analyst should know when to
-          let the agent handle a routine task, when to request further
-          evidence, and when to take control because the potential
-          consequences are too serious to leave to an uncertain
-          automated decision.
+          To me, a good SOC pilot is neither a person who approves
+          every AI recommendation nor someone who refuses to use
+          automation. It is someone who knows when the agent can
+          safely handle a task, when more evidence is needed, and
+          when the possible consequences are too serious to leave
+          to an uncertain automated decision.
         </p>
+
       </section>
 
+      <!-- 5. ASSET INFORMATION AND CONTEXT -->
+
       <section id="asset-context">
+
         <h2>The Problem With Incorrect Asset Information</h2>
 
         <p>
           One of the most important ideas in the IBM article is that
-          an agent needs context before deciding how to respond to
-          an alert. Knowing that a device is behaving suspiciously
-          is only part of the problem. The agent also needs to know
-          what the device does, how important it is, who is responsible
-          for it, and which services depend on it.
+          an agent needs context before deciding how to respond to an
+          alert. Knowing that a device is behaving suspiciously is
+          only part of the problem. The agent also needs to know what
+          the device does, how important it is, who owns it, which
+          applications depend on it, and whether disruption would
+          affect essential services.
         </p>
 
         <p>
-          A regular employee workstation and a server supporting a
-          critical application may show similar warning signs, but
+          A standard employee workstation and a server that supports
+          a critical application may show similar warning signs, but
           the consequences of isolating them can be very different.
-          Without reliable asset information, an agent may choose
-          a response that seems reasonable based on the alert but
-          is wrong for the organization.
+          If the agent does not know the device's role, it may select
+          a response that makes sense from the alert alone but is
+          wrong for the organization. The quality of an automated
+          decision is therefore tied to the quality of its context.
         </p>
 
         <p>
-          The NIST Cybersecurity Framework 2.0 emphasizes identifying
-          and managing assets, including hardware, software, services,
-          and systems. It also supports understanding the importance
-          of those assets when organizations prioritize cybersecurity
-          risks (Pascoe et al., 2024). This is directly relevant to
-          autonomous SOC operations because an agent cannot make
-          an informed response decision if the organization does not
-          maintain a reliable picture of the environment it is
-          supposed to protect.
+          The NIST Cybersecurity Framework 2.0 highlights the
+          importance of identifying and managing assets, including
+          hardware, software, services, and systems, and understanding
+          their significance to cybersecurity risk management
+          (Pascoe et al., 2024). This guidance matters for autonomous
+          SOCs because an agent cannot make an informed decision if
+          the organization does not maintain a reliable picture of
+          the environment it is supposed to protect.
         </p>
 
         <p>
-          Imagine that a company's asset inventory incorrectly labels
-          a critical application server as an ordinary workstation.
-          During an incident, an AI agent may trust this record and
-          isolate the server automatically. The immediate action
-          might stop suspicious activity, but it could also interrupt
-          an essential service. The agent would have followed the
-          information it was given, yet the result could still be
-          harmful.
+          Imagine that an inventory incorrectly labels a critical
+          application server as an ordinary workstation. During an
+          incident, an agent might trust that record and isolate the
+          server automatically. Although the action could stop
+          suspicious activity, it might also interrupt an essential
+          service. The agent may have followed its instructions
+          correctly, but the outcome would still be harmful because
+          the information behind its decision was wrong.
         </p>
 
         <p>
-          The reverse mistake is just as concerning. Suppose an
-          ordinary workstation is incorrectly marked as highly
-          critical. The agent might hesitate to isolate it because
-          it believes that doing so would create a major outage.
-          Meanwhile, an attacker may continue operating from the
-          compromised device. In this case, incorrect context could
-          delay an appropriate response.
+          The opposite error is also serious. Suppose an ordinary
+          workstation is incorrectly marked as highly critical. The
+          agent might avoid isolating it because it assumes the action
+          would cause a major outage. An attacker could then continue
+          operating from the compromised device. In both cases,
+          incorrect data can push the agent toward a harmful decision:
+          acting too aggressively or waiting too long.
         </p>
 
         <p>
-          Asset information can become inaccurate for many reasons.
-          A device might have been renamed, moved to another department,
-          or repurposed without updating the inventory. Ownership
-          details may be missing, dependencies may not have been
-          documented, or different security tools may contain
-          conflicting records. The information might also be old
-          enough that it no longer represents the current environment.
+          Asset records can become inaccurate for many reasons.
+          A device may be renamed, moved to another department, or
+          repurposed without updating the inventory. Ownership
+          information may be missing, application dependencies may
+          not be documented, or two security tools may disagree about
+          the same device. Even an accurate record can become unreliable
+          if it is old and no one has checked whether it still reflects
+          the current environment.
         </p>
 
         <p>
-          Incomplete information should never be treated as permission
-          for the AI agent to guess. The agent should identify missing
-          details, compare records from trusted systems, check when
-          the information was last verified, and explain where sources
-          disagree. It should distinguish confirmed facts from
-          assumptions instead of presenting an uncertain classification
-          as if it were unquestionably correct.
+          Missing information should not give the agent permission
+          to guess. Instead, it should mark unknown details as unknown,
+          check trusted systems for confirmation, compare sources,
+          and report when records conflict or have not been updated
+          recently. It should separate facts from assumptions and
+          explain which missing details prevent it from making a safe
+          decision. Confidence in an AI-generated answer is not a
+          replacement for evidence.
         </p>
 
         <p>
-          If the information needed to support a high-impact action
-          cannot be verified, the agent should request human review
-          or follow a predefined, low-impact containment procedure.
-          It should not perform an irreversible action simply because
-          its automated workflow expects a decision.
+          If a high-impact action depends on information that cannot
+          be verified, the agent should pause that action and escalate
+          the incident to a human analyst. Depending on the situation,
+          it might still take a preapproved, low-impact step to reduce
+          risk while waiting for review. The exact fallback should
+          be decided in advance; it should not improvise a potentially
+          disruptive action simply because its workflow expects an answer.
         </p>
 
         <p>
-          Organizations therefore need to treat asset inventories
-          as living records rather than documents that are completed
-          once and forgotten. They should assign responsibility for
-          updating them, reconcile information across systems, review
-          important changes, and investigate discrepancies. An agent
-          is only as well informed as the information available to
-          it, so reliable context is a basic security requirement,
-          not an optional extra.
+          Organizations must therefore treat asset inventories as
+          living records, not documents that are completed once and
+          forgotten. They should assign clear ownership, update records
+          when systems change, reconcile data across tools, document
+          service dependencies, and regularly check whether critical
+          information remains accurate. Reliable asset context is
+          part of the security foundation. Without it, even a powerful
+          AI agent can automate the wrong decision faster.
         </p>
+
       </section>
 
+      <!-- 6. RESPONSIBLE AI SAFEGUARDS -->
+
       <section id="guardrails">
+
         <h2>Making Automation Responsible</h2>
 
         <p>
-          A responsible autonomous SOC should be evaluated by more
-          than the number of alerts it closes or the speed at which
-          it reacts. Organizations should also look at whether the
-          actions are correct, how often they cause unnecessary
-          disruption, whether evidence is preserved, and how well
-          analysts can review the agent's decisions.
+          A responsible SOC should be evaluated by more than the
+          number of alerts it closes or the speed at which it reacts.
+          Organizations should measure whether actions are correct,
+          how often they create unnecessary disruption, whether
+          evidence is preserved, how frequently agents need human
+          correction, and whether the incident was ultimately contained.
+          Fast responses are useful only when they are appropriate.
         </p>
 
         <p>
-          Before giving an agent permission to act independently,
-          an organization should test it against realistic incidents,
-          incomplete asset records, conflicting evidence, and
-          unexpected situations. It should also establish clear
-          thresholds for actions that require human approval.
-          Every important action should produce an audit record
-          explaining what triggered it, what information supported
-          it, and what happened afterward.
+          Before an agent is allowed to act independently, it should
+          be tested against realistic incidents, missing or incorrect
+          asset records, conflicting evidence, and unusual conditions.
+          Testing should include situations where the safest action
+          is to do nothing automatically and ask for help. An agent
+          that performs well on routine examples may still fail when
+          the environment changes or when information is deliberately
+          misleading.
         </p>
 
         <p>
-          The system should also have a clear way to stop unsafe
-          operations. If essential context is missing, a required
-          security tool is unavailable, or the agent cannot determine
-          whether an action is safe, it should escalate the situation
-          rather than continue blindly. Human analysts should be
-          able to pause automated actions and investigate what has
-          gone wrong.
+          Organizations should define action limits, require approval
+          for high-impact decisions, use least-privilege permissions,
+          keep clear audit logs, and maintain recovery procedures.
+          Analysts must be able to pause an agent, review its activity,
+          and reverse an action when possible. Teams should also
+          examine failures and near misses so that playbooks, asset
+          records, and controls can be improved.
         </p>
 
         <p>
-          These safeguards do not defeat the purpose of automation.
-          They help establish where autonomy is justified. An
-          organization can gradually give an agent more responsibility
-          when testing and experience show that it handles a particular
-          type of task reliably. If its performance changes or its
-          environment becomes different, those permissions should
-          be reviewed.
+          The system needs a reliable escalation path. If essential
+          context is missing, a security tool is unavailable, or the
+          agent cannot determine whether an action is safe, it should
+          stop short of that high-impact action and request review.
+          This "fail safely" approach is not a weakness; it prevents
+          the system from treating uncertainty as a reason to take a risk.
         </p>
 
         <p>
-          This approach is consistent with the NIST AI Risk Management
-          Framework, which encourages organizations to identify,
-          evaluate, and manage AI risks throughout the system's
-          lifecycle (Tabassi, 2023). Responsible autonomy is not
-          just about building a capable agent. It also requires
-          governance, testing, monitoring, and accountability after
-          the agent has been deployed.
+          These controls are consistent with the NIST AI Risk
+          Management Framework's emphasis on identifying, measuring,
+          and managing risk throughout an AI system's lifecycle
+          (Tabassi, 2023). Responsible autonomy requires governance
+          and monitoring after deployment, not just a successful
+          demonstration before launch. Permissions should be reviewed
+          as threats, systems, and business needs change.
         </p>
+
       </section>
 
+      <!-- 7. CAREER REFLECTION -->
+
       <section id="skills">
+
         <h2>Skills I Would Need to Become a SOC Pilot</h2>
 
         <p>
-          To become a SOC pilot rather than be replaced by one,
-          I would need more than basic knowledge of AI tools. I
-          would first need a strong foundation in cybersecurity,
-          including computer networks, operating systems, identity
-          and access management, endpoint security, cloud environments,
-          log analysis, and incident response. These skills would
-          help me understand what an agent is investigating and
-          check whether its conclusions match the available evidence.
+          To become a SOC pilot rather than be replaced by one, I would
+          need more than the ability to operate AI tools. I would need
+          a strong foundation in computer networks, operating systems,
+          identity and access management, endpoint security, cloud
+          environments, log analysis, and incident response. These
+          skills would help me understand what an agent is investigating
+          and check whether its conclusions match the evidence.
         </p>
 
         <p>
-          I would also need to develop critical thinking and AI literacy.
-          That means recognizing uncertainty, checking the quality
-          and freshness of information, understanding how automated
-          responses can fail, and being willing to challenge an AI
-          recommendation when the evidence does not support it.
-          Scripting and security automation would also be valuable
-          because I would need to understand response playbooks,
-          test them safely, and recognize the possible consequences
-          of a proposed action.
+          I would also need critical thinking and AI literacy. This
+          means recognizing uncertainty, checking the quality and
+          freshness of data, understanding the limits of automated
+          systems, and challenging a recommendation when its supporting
+          evidence is weak. Scripting and security automation would
+          help me understand response playbooks, test them safely,
+          and identify the possible consequences of proposed actions.
+          Knowledge of asset management would be important too, because
+          the agent's decisions depend on accurate information about
+          devices and services.
         </p>
 
         <p>
           Technical knowledge alone would not be enough. A SOC pilot
           must communicate clearly with system owners, document
           decisions, coordinate with other teams, and explain risks
-          in a way that helps people make informed choices. The role
-          also requires patience and continuous learning because
-          attackers, defensive technologies, and organizational
-          environments keep changing.
+          in language that people can understand. The role also requires
+          patience and continuous learning because attackers, tools,
+          and organizational environments keep changing. Just as
+          importantly, an analyst must be willing to accept responsibility,
+          admit uncertainty, and ask for help when the evidence is
+          incomplete.
         </p>
 
         <p>
-          Personally, I would want to become the kind of analyst
-          who knows when to rely on automation and when to question
-          it. AI may become very good at collecting evidence and
-          carrying out routine procedures, but someone still needs
-          to understand what that evidence means in the real world.
-          My goal would be to develop the judgment and technical
-          confidence needed to supervise AI responsibly rather than
-          compete with it at repetitive tasks.
+          Personally, I want to become the kind of analyst who knows
+          when to rely on automation and when to question it. AI may
+          become very good at gathering evidence and carrying out
+          routine procedures, but someone still needs to understand
+          what that evidence means in the real world. My goal would
+          be to develop the technical confidence, judgment, communication,
+          and accountability needed to guide automation responsibly
+          rather than compete with it at repetitive tasks.
         </p>
+
       </section>
 
+      <!-- 8. CONCLUSION -->
+
       <section id="conclusion">
+
         <h2>Conclusion</h2>
 
         <p>
-          The SOC pilot model is a realistic direction for cybersecurity,
-          provided it is introduced with clear limits and meaningful
-          human oversight. AI can help with repetitive investigations,
-          gathering evidence, organizing alerts, and performing
-          carefully defined low-risk actions. However, unfamiliar
-          attacks, conflicting information, critical services, and
-          high-impact decisions still require human judgment.
+          The SOC pilot model is a realistic direction for cybersecurity
+          when it is introduced carefully, with clear limits and
+          meaningful human oversight. AI can help investigate routine
+          alerts, gather evidence, organize information, and perform
+          defined low-risk actions. However, unfamiliar attacks,
+          conflicting evidence, critical systems, and decisions with
+          serious consequences still require human judgment. The
+          airline comparison is a helpful vision of supervised
+          automation, but cybersecurity's changing and adversarial
+          environment makes unrestricted autonomy risky.
         </p>
 
         <p>
-          The asset-context problem is especially important. If an
-          agent relies on incomplete or incorrect information, it
-          may make a decision that appears logical but creates an
-          outage or allows an attack to continue. Accurate inventories,
-          reliable evidence, careful testing, and clear escalation
-          procedures are therefore essential to responsible automation.
+          The asset-context problem shows why. If an agent relies on
+          incomplete or incorrect information, it may make a decision
+          that appears logical but causes an outage or allows an attack
+          to continue. Accurate inventories, tested response procedures,
+          restricted permissions, audit trails, and clear escalation
+          paths are therefore essential. I believe the future SOC
+          should combine machine efficiency with human responsibility:
+          let AI handle suitable routine work, but keep trained people
+          ready to question, guide, and take control when the situation
+          demands it. Becoming a SOC pilot means learning how to use
+          automation without surrendering judgment to it.
         </p>
 
-        <p>
-          I see the future SOC as a partnership between machine
-          efficiency and human judgment. Machines can handle much
-          of the routine work, while analysts focus on understanding
-          unusual situations, weighing consequences, and making
-          responsible decisions. Becoming a SOC pilot means building
-          the technical knowledge, critical thinking, communication,
-          and accountability needed to guide automation rather than
-          simply trust it.
-        </p>
       </section>
 
+      <!-- REFERENCES: APA 7TH EDITION -->
+
       <section class="references" id="references">
+
         <h2>References</h2>
 
         <p class="reference-item">
-          National Institute of Standards and Technology. (2024).
+          Pascoe, C., Quinn, S., &amp; Scarfone, K. (2024).
           <em>The NIST Cybersecurity Framework (CSF) 2.0</em>
-          (NIST CSWP 29). U.S. Department of Commerce.
-          <a href="https://doi.org/10.6028/NIST.CSWP.29" target="_blank" rel="noopener noreferrer">https://doi.org/10.6028/NIST.CSWP.29</a>
+          (NIST CSWP 29). National Institute of Standards and Technology.
+          <a
+            href="https://doi.org/10.6028/NIST.CSWP.29"
+            target="_blank"
+            rel="noopener noreferrer"
+          >https://doi.org/10.6028/NIST.CSWP.29</a>
         </p>
 
         <p class="reference-item">
           Tabassi, E. (2023).
-          <em>Artificial intelligence risk management framework (AI RMF 1.0)</em>
-          (NIST AI 100-1). National Institute of Standards and Technology.
-          <a href="https://doi.org/10.6028/NIST.AI.100-1" target="_blank" rel="noopener noreferrer">https://doi.org/10.6028/NIST.AI.100-1</a>
+          <em>Artificial intelligence risk management framework
+          (AI RMF 1.0)</em> (NIST AI 100-1). National Institute of
+          Standards and Technology.
+          <a
+            href="https://doi.org/10.6028/NIST.AI.100-1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >https://doi.org/10.6028/NIST.AI.100-1</a>
         </p>
 
         <p class="reference-item">
           Velisaris, J. (2025).
-          <em>How agentic AI enables an autonomous SOC with minimal human involvement.</em>
-          IBM.
-          <a href="https://www.ibm.com/think/insights/agentic-ai-enables-autonomous-soc" target="_blank" rel="noopener noreferrer">https://www.ibm.com/think/insights/agentic-ai-enables-autonomous-soc</a>
+          <em>How agentic AI enables an autonomous SOC with minimal
+          human involvement.</em> IBM.
+          <a
+            href="https://www.ibm.com/think/insights/agentic-ai-enables-autonomous-soc"
+            target="_blank"
+            rel="noopener noreferrer"
+          >https://www.ibm.com/think/insights/agentic-ai-enables-autonomous-soc</a>
         </p>
+
       </section>
 
-      <nav class="article-bottom-nav" aria-label="Article navigation">
+      <!-- ARTICLE NAVIGATION -->
+
+      <nav
+        class="article-bottom-nav"
+        aria-label="Article navigation"
+      >
         <a href="#top">Back to top ↑</a>
         <a href="#table-of-contents">Return to contents</a>
       </nav>
 
     </article>
+
   </main>
 
   <footer class="site-footer">
